@@ -6,6 +6,7 @@ class Cart
   attr_accessor :total, :item_count
 
   def initialize
+    Book.clear_books
     @total = 0
     @item_count = 0
     @json_receipt = {books: [], cart: {total: 0, item_count: 0}}
