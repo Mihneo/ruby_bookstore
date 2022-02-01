@@ -4,6 +4,7 @@ require_relative '../level4/cart4'
 
 class Cart5 < Cart4
   def initialize
+    Book2.clear_books
     super
     @sub_total = 0
     @promotion = 0
