@@ -1,25 +1,23 @@
 require 'json'
 
 class JsonReaderWriter
-  @instance = new
 
-  private_class_method :new
-
-  def self.instance
-    @instance
-  end
-
-  def read_file(json_file)
+  def self.read_file(json_file)
     if json_file.include?('.json')
       file = File.read(json_file)
-      JSON.parse(file)
+      begin
+        JSON.parse(file)
+      rescue JSON::ParserError
+        puts "Malformed json."
+        nil
+      end
     else
       puts "Bad file type."
       nil
     end
   end
 
-  def export_to_file(export_data)
+  def self.export_to_file(export_data)
     File.open("output.json", "w") do |f|
       f.write(JSON.pretty_generate(export_data))
     end
