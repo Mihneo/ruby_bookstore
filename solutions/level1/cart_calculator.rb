@@ -24,10 +24,10 @@ class CartCalculator
     end
   end
 
-  def calculate_receipt(data_hash)
-    cart_hash = { "total": 0, "item_count": 0 }
+  def calculate_receipt(data_hash, book_ids)
+    cart_hash = { 'total': 0, 'item_count': 0 }
 
-    chosen_books = select_books(data_hash, [1, 2])
+    chosen_books = select_books(data_hash, book_ids)
 
     unless chosen_books.nil?
       chosen_books.each do |book|
@@ -39,15 +39,15 @@ class CartCalculator
     data_hash
   end
 
-  def export_receipt(file)
+  def export_receipt(file, book_ids)
     json_reader = JsonReaderWriter.instance
     data_hash = json_reader.read_file(file)
 
-    export_data = calculate_receipt(data_hash)
+    export_data = calculate_receipt(data_hash, book_ids)
 
     json_reader.export_to_file(export_data)
   end
 end
 
 cart_calculator = CartCalculator.instance
-cart_calculator.export_receipt('../../requirements/level1/data.json')
+cart_calculator.export_receipt('../../requirements/level1/data.json', [1, 2])
