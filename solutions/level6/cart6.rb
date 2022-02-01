@@ -3,15 +3,6 @@ require_relative '../level4/book2'
 require_relative '../level5/cart5'
 
 class Cart6 < Cart5
-  # def clear_cart_items
-  #   @json_receipt[:cart][:cart_items].each do |cart_book|
-  #     Book2.books.each do |library_book|
-  #       if library_book.id == cart_book[:id]
-  #         library_book.stock += cart_book[:qty]
-  #       end
-  #     end
-  #   end
-  # end
 
   def export_receipt(file, book_ids)
     data_hash = JsonReaderWriter.read_file(file)
