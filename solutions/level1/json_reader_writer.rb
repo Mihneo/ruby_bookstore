@@ -6,7 +6,7 @@ class JsonReaderWriter
     if json_file.include?('.json')
       file = File.read(json_file)
       begin
-        JSON.parse(file)
+        JSON.parse(file, symbolize_names: true)
       rescue JSON::ParserError
         puts "Malformed json."
         nil

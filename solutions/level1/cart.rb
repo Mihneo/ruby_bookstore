@@ -10,24 +10,16 @@ class Cart
     @item_count = 0
   end
 
-
-  def calculate_totals(books, book_ids)
-    unless books.empty?
-      books.each do |book|
-        if book_ids.include?(book.id)
-          @total += book.price
-          @item_count += 1
-        end
-      end
-    end
+  def add_item(book)
+    @total += book.price
+    @item_count += 1
   end
 
   def generate_receipt(books)
-    books = BookSerializer.serialize_books(books)
-    OpenStruct.new(books: books, cart: {total: @total, item_count: @item_count }).to_h
-  end
-
-  def export_receipt(json)
-    JsonReaderWriter.export_to_file(json)
+    parsed_books = []
+    books.each do |book|
+      parsed_books << book.to_json
+    end
+    OpenStruct.new(books: parsed_books, cart: {total: @total, item_count: @item_count }).to_h
   end
 end

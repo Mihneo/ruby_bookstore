@@ -1,14 +1,14 @@
 require_relative 'cart'
 require_relative 'library'
-require_relative 'book_serializer'
+require_relative 'printer'
 
 FILE = '../../requirements/level1/data.json'
 
-library = Library.new
-books_hash = JsonReaderWriter.read_file(FILE)
-library.create_books(books_hash)
+library = Library.new(FILE)
 
 cart = Cart.new
-cart.calculate_totals(library.books, [1, 2])
+cart.add_item(library.books[0])
+cart.add_item(library.books[1])
+
 receipt = cart.generate_receipt(library.books)
-cart.export_receipt(receipt)
+Printer.export_receipt(receipt)
