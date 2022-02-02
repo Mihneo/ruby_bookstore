@@ -1,4 +1,8 @@
 {
+  "cart": {
+    "total": 140,
+    "item_count": 2
+  },
   "books": [
     {
       "id": 1,
@@ -15,9 +19,5 @@
       "title": "In Search of Lost Time",
       "price": 70
     }
-  ],
-  "cart": {
-    "total": 140,
-    "item_count": 2
-  }
+  ]
 }

@@ -9,7 +9,7 @@ class Book
     @price = price
   end
 
-  def to_json
-     OpenStruct.new(id: @id, title: @title, price: @price).to_h
+  def to_h
+    { id: @id, title: @title, price: @price }
   end
 end

@@ -5,13 +5,22 @@ class Library
 
   def initialize(file)
     @books = []
-    books_hash = JsonReaderWriter.read_file(file)
-    create_books(books_hash)
+    books_json = JsonReaderWriter.read_file(file)
+    create_books(books_json)
   end
 
-  def create_books(books_hash)
-    books_hash[:books].each do |book_hash|
+  def create_books(books_json)
+    books_json[:books].each do |book_hash|
       @books << Book.new(book_hash[:id], book_hash[:title], book_hash[:price])
     end
+  end
+
+  def find_book_by_id(id)
+    @books.each do |book|
+      if book.id == id
+        return book
+      end
+    end
+    nil
   end
 end
