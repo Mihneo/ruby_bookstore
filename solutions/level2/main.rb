@@ -2,7 +2,7 @@ require_relative 'cart'
 require_relative 'library'
 require_relative 'printer'
 
-FILE = '../../requirements/level1/data.json'
+FILE = '../../requirements/level2/data.json'
 
 library = Library.new(FILE)
 

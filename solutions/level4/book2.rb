@@ -1,4 +1,4 @@
-require_relative '../level1/book'
+require_relative '../level2/book'
 
 class Book2 < Book
   @@books = []

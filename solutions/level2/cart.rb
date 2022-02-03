@@ -26,6 +26,6 @@ class Cart
   end
 
   def to_h
-    { cart: {total: @total, item_count: @item_count } }
+    { cart: {total: @total, item_count: @item_count, cart_items: @item_list.map(&:to_h)} }
   end
 end
