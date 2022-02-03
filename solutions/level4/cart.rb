@@ -12,7 +12,7 @@ class Cart
   end
 
   def add_item(item)
-    @item_list << item if item != nil
+      @item_list << item unless item.nil?
   end
 
   def calculate_total
@@ -35,10 +35,13 @@ class Cart
     cart_items = []
     quantities = calculate_qty
     quantities.each do |item_quantity|
+      if item_quantity[1] > item_quantity[0][:stock]
+        item_quantity[1] = item_quantity[0][:stock]
+      end
       item_quantity[0][:qty] = item_quantity[1]
       cart_items << item_quantity[0]
     end
-    @item_list = cart_items
+    @item_list = cart_items.map { |item| item.except(:stock) }
   end
 
   def to_h

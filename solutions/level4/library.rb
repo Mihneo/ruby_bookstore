@@ -11,7 +11,14 @@ class Library
 
   def create_books(books_json)
     books_json[:books].each do |book_hash|
-      @books << Book.new(book_hash[:id], book_hash[:title], book_hash[:price])
+      @books << Book.new(book_hash[:id], book_hash[:title], book_hash[:price], book_hash[:stock])
+    end
+  end
+
+  def update_stock(after_purchase_stock)
+    after_purchase_stock.each do |book_with_new_stock|
+      library_book = find_book_by_id(book_with_new_stock[0][:id])
+      library_book.stock -= book_with_new_stock[0][:qty]
     end
   end
 

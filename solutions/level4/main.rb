@@ -2,17 +2,19 @@ require_relative 'cart'
 require_relative 'library'
 require_relative 'printer'
 
-FILE = '../../requirements/level3/data.json'
+FILE = '../../requirements/level4/data.json'
 
 library = Library.new(FILE)
 
 cart = Cart.new
 cart.add_item(library.find_book_by_id(1))
-cart.add_item(library.find_book_by_id(1))
-cart.add_item(library.find_book_by_id(1))
-cart.add_item(library.find_book_by_id(3))
+cart.add_item(library.find_book_by_id(2))
+cart.add_item(library.find_book_by_id(2))
+cart.add_item(library.find_book_by_id(2))
+
 
 cart.prepare_items_with_qty
+library.update_stock(cart.calculate_qty)
 cart.calculate_count
 cart.calculate_total
 
