@@ -2,13 +2,12 @@ require_relative 'cart'
 require_relative 'library'
 require_relative 'printer'
 
-FILE = '../../requirements/level4/data.json'
+FILE = '../../requirements/level5/data.json'
 
 library = Library.new(FILE)
 
 cart = Cart.new
 cart.add_item(library.find_book_by_id(1))
-cart.add_item(library.find_book_by_id(2))
 cart.add_item(library.find_book_by_id(2))
 cart.add_item(library.find_book_by_id(2))
 
