@@ -15,14 +15,17 @@ class Cart
     @item_list << item if item != nil
   end
 
-  def calculate_total_and_count
+  def calculate_total
     @item_list.each do |item|
       @total += item.price
-      @item_count += 1
     end
   end
 
-  def generate_receipt
+  def calculate_count
+    @item_count = @item_list.size
+  end
+
+  def to_h
     { cart: {total: @total, item_count: @item_count } }
   end
 end

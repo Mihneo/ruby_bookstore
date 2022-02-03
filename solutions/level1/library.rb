@@ -16,11 +16,6 @@ class Library
   end
 
   def find_book_by_id(id)
-    @books.each do |book|
-      if book.id == id
-        return book
-      end
-    end
-    nil
+    @books.detect { |book| book.id == id }
   end
 end

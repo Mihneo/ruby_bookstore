@@ -7,10 +7,7 @@ class Printer
   end
 
   def self.merge_receipt_with_books(books, receipt)
-    receipt[:books] = []
-    books.each do |book|
-      receipt[:books] << book.to_h
-    end
+    receipt[:books] = books.map(&:to_h)
     receipt
   end
 end
