@@ -1,6 +1,6 @@
+require 'ostruct'
 
 class Book
-  @@books = []
   attr_accessor :id, :title, :price
 
   def initialize(id, title, price)
@@ -9,17 +9,7 @@ class Book
     @price = price
   end
 
-  def self.books
-    @@books
-  end
-
-  def self.clear_books
-    @@books = []
-  end
-
-  def to_hash
-    hash = {}
-    instance_variables.each { |var| hash[var.to_s.delete('@')] = instance_variable_get(var) }
-    hash
+  def to_h
+    { id: @id, title: @title, price: @price }
   end
 end
