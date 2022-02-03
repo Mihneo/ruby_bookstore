@@ -17,6 +17,10 @@ class Cart
       @item_list << item unless item.nil?
   end
 
+  def clear_cart
+    initialize
+  end
+
   def calculate_total
     @item_list.each do |item|
       @total += item[:price] * item[:qty]
